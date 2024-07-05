@@ -1,0 +1,16 @@
+{% extends "layout.html"%}
+{% block content %}
+<body class="bgcolor grid-container">
+    <div class="grid-container"><p class="font">Alca Chat</p></div>
+    <div class="box">
+        <div class="container-column"><input type="text" maxlength="15" placeholder="User name"></div>
+        <div class="container-column"><input type="password" maxlength="15" placeholder="Password"></div>
+        <div class="container-column"><input type="submit" value="Log-in" name="login" class="loginbutton"></div>
+        <div><hr></div>
+        <div class="container-column forgot">Forgot passowrd</div>
+        <div class="container-column"><input type="submit" value="Sign-up" name="signup" class="signupbutton"></div>
+    </div>
+
+</body>
+</html>
+{% endblock content%}
