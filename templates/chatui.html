@@ -1,0 +1,27 @@
+{% extends "layout.html"%}
+{% block content %}
+
+<body class="backcolor">
+
+    <div class="box1 koho-regular">
+        <p class="container-column">Profile</p>
+        <hr width="90%" color="white">
+
+        <p class="container-column">User name - {{user_name_1}}</p>
+        <p class="container-column">Name - {{fname_1}} {{lname_1}}</p>
+        <p class="container-column">Phone number - {{phone_1}}</p>
+
+    </div> 
+    
+
+
+
+    <div class="box2 koho-regular">
+        <p class="container-column">{{ user_name_1 }}</p>
+        <hr width="95%" color="white">
+        <input type="text" name="msg" placeholder="Type your message here" class="msginput"><input type="submit" name="send" value="Send" class="send">
+
+    </div>
+
+</body>
+{% endblock content%}

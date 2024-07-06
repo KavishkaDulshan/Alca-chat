@@ -3,6 +3,7 @@ from flask import Flask, request
 from flask import Flask, redirect, url_for
 import mysql.connector
 
+
 conn = mysql.connector.connect(
     host='127.0.0.1',
     user='root',
@@ -18,6 +19,7 @@ title = "home"
 title2 = "login"
 title3 = "signup"
 title4 = "about"
+title5 = "chat"
 
 @app.route("/")
 @app.route("/home")
@@ -35,6 +37,11 @@ def login():
 @app.route("/signup")
 def signup():
     return render_template('signin.html', title3= title3)
+
+@app.route("/chat")
+def chat():
+    return render_template('chatui.html', title5= title5, user_name_1=user_name_1, fname_1=fname_1, lname_1=lname_1, phone_1=phone_1)
+
 
 @app.route('/checkuser', methods=['POST'])
 def checkuser():
@@ -83,10 +90,23 @@ def adduser():
         else:
             return "Something went wrong" 
         
-        '''if data == list3:
-            return redirect(url_for('home'))
-        else:
-            return redirect(url_for('login'))'''
+@app.route("/finduser", methods=['POST'])
+def finduser():
+     find = request.form.get('username')
+     data = [find]
+     
+     query = "select * from user where user_name =" "%s" 
+     cursor.execute(query,data)
+     result = cursor.fetchall()
+     conn.commit()
+    
+     global user_name_1,fname_1,lname_1,phone_1
+     user_name_1 = result[0][1]
+     fname_1 = result[0][2]
+     lname_1 = result[0][3]
+     phone_1 = result[0][5]
+
+     return redirect(url_for('chat'))
         
 
 app.run(host="0.0.0.0", port=5505, debug=True)

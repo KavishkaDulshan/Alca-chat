@@ -8,7 +8,11 @@
 
     <div class="container-column">
 
-        <input type="text" maxlength="16" placeholder="Find your friends" name="username"> <input type="submit" value="Search" name="search" class="loginbutton">
+        <form method="post" action="{{('finduser')}}">
+            
+        <input class="input1" type="text" maxlength="16" placeholder="Find your friends" name="username"> <input type="submit" value="Search" class="loginbutton">
+        
+        </form>
 
     </div>
     <div>
