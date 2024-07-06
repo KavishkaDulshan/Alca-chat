@@ -1,14 +1,23 @@
 {% extends "layout.html" %}
 {% block content %}
 <body class="bgcolor grid-container">
-    <div class="grid-container"><p class="font">Alca Chat</p></div>
+
+    <div class="grid-container"><p class="cabin-sketch-bold ">Project X</p></div>
+
     <div class="box">
-        <div><input class="input" type="text" placeholder="First name"><input class="input" type="text" placeholder="Last name"></div>
-        <div class="container-column"><input class="input2" placeholder="User name" type="text"></div>
-        <div class="container-column"><input class="input2" placeholder="Phone number" type="text" maxlength="10"></div>
-        <div class="container-column"><input class="input2" placeholder="Password" type="Password"></div>
-        <div class="container-column"><input class="input2" placeholder="Confirm Password" type="password"></div>
-        <div class="container-column"><button class="signupbutton">Sign-up</button></div>
+
+        <form method="post" action="{{ url_for('adduser') }}">
+
+        <div><input name="fname" class="input" type="text" placeholder="First name"><input name="lname" class="input" type="text" placeholder="Last name"></div>
+        <div class="container-column"><input name="user_name" class="input2" placeholder="User name" type="text"></div>
+        <div class="container-column"><input name="phone" class="input2" placeholder="Phone number" type="text" maxlength="10"></div>
+        <div class="container-column"><input name="passwd" class="input2" placeholder="Password" type="Password"></div>
+        <div class="container-column"><input name="confpasswd" class="input2" placeholder="Confirm Password" type="password"></div>
+        <div class="container-column"><input type="submit" class="signupbutton" value="Sign-up" name="signup"></div>
+
+        </form>
+
     </div>
+
 </body>
 {% endblock content%}

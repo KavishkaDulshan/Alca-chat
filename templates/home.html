@@ -1,8 +1,16 @@
 {% extends "layout.html"%}
 {% block content %}
-<form action="{{ url_for('handle_data') }}" method="post">
-    <input type="text" name="projectFilepath">
-    <input type="submit">
-</form>
+<body class="backcolor grid-container">
+    <div class="container-column">
+        <p class="arsenal-sc-regular">Hi {{ user_name }} Welcome to Project X</p>
+        <p class="playwrite-gb-s-font">“Connecting Conversations...”</p>
+    </div>
+
+    <div class="container-column">
+
+        <input type="text" maxlength="16" placeholder="Find your friends" name="username"> <input type="submit" value="Search" name="search" class="loginbutton">
+
+    </div>
+</body>
 
 {% endblock content%}
