@@ -43,9 +43,10 @@
     padding-left: 10px;
     font-size: 20px;
     text-align: center;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-family: "Megrim", system-ui;
     background-color: rgb(0, 0, 0);
     font-weight: bold;
+    text-transform: none;
 }
 
 input{
@@ -59,9 +60,10 @@ input{
     padding-left: 10px;
     font-size: 20px;
     text-align: center;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-family: "Megrim", system-ui;
     background-color: rgb(0, 0, 0);
     font-weight: bold;
+    text-transform: none;
 }
 
 .loginbutton{
@@ -73,7 +75,7 @@ input{
     color: white;
     background-color: #000000;
     font-size: 20px;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-family: "Megrim", system-ui;
     font-weight: bold;
 }
 
@@ -86,7 +88,7 @@ input{
     color: white;
     background-color: #000000;
     font-size: 20px;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-family: "Megrim", system-ui;
     font-weight: bold;
 }
 
@@ -110,15 +112,16 @@ hr{
     padding-left: 10px;
     font-size: 20px;
     text-align: center;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-family: "Megrim", system-ui;
     background-color: rgb(0, 0, 0);
     font-weight: bold;
+    text-transform: none;
 }
 
 .forgot{
     font-size: 15px;
     color:#ffffff;
-    font-family: 'Courier New', Courier, monospace;
+    font-family: "Megrim", system-ui;
 }
 
 .cabin-sketch-regular {
@@ -142,3 +145,10 @@ hr{
     font-size: 60px;
   }
   
+  .img04{
+    height: 200px;
+    position: absolute;
+    max-width: 100%;
+    margin-left: 900px;
+    margin-top: 0px;
+  }

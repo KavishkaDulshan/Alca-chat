@@ -88,5 +88,5 @@ def adduser():
         else:
             return redirect(url_for('login'))'''
         
-        
-app.run(host="0.0.0.0", port=5505)
+
+app.run(host="0.0.0.0", port=5505, debug=True)
