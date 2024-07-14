@@ -19,8 +19,14 @@
     <div class="box2 koho-regular">
         <p class="container-column">{{ user_name_1 }}</p>
         <hr width="95%" color="white">
-        <input type="text" name="msg" placeholder="Type your message here" class="msginput"><input type="submit" name="send" value="Send" class="send">
-
+        
+        <div id="chat">
+            <div id="messages"></div>
+            
+        </div>
+        <div>
+        <input class="msginput" style="width: 78%;" id="message" autocomplete="off" placeholder="Type a message..." /><button class="send" onclick="sendMessage()">Send</button>
+        </div>
     </div>
 
 </body>

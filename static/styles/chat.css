@@ -34,10 +34,10 @@
     font-size: 20px;
     text-align: center;
     background-color: rgb(0, 0, 0);
-    width: 74%;
+    width: 60%;
     float: left;
     margin-left: 20px;
-    margin-top: 480px;
+    margin-top: 0px;
 
 }
 
@@ -49,10 +49,39 @@
     font-size: 20px;
     text-align: center;
     background-color: rgb(0, 0, 0);
-    width: 14%;
+    width: 10%;
     float: right;
     margin-right: 20px;
-    position: fixed;
-    margin-top: 480px;
+    position: absolute;
+    margin-top: 0px;
 
 }
+
+/* static/styles.css */
+
+
+#chat {
+    width: 100%;
+    border: 1px solid #ccc;
+    background-color: rgb(0, 0, 0);
+}
+
+#messages {
+    height: 450px;
+    overflow-y: scroll;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+    background-color: black;
+}
+
+#message {
+    width: 200px;
+    padding: 10px;
+    color: #ffffff;
+    background-color: black;
+}
+
+button {
+    padding: 10px;
+}
+

@@ -4,6 +4,10 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
+    <script src="https://cdn.socket.io/4.0.0/socket.io.min.js"></script>
+
+    <link rel="shortcut icon" href="static/styles/favicon.ico">
+
     <link rel="stylesheet" href="static/styles/mainpage.css">
     <link rel="stylesheet" href="static/styles/home.css">
     <link rel="stylesheet" href="static/styles/chat.css">
@@ -39,5 +43,24 @@
 </head>
 <body>
     {% block content %} {% endblock %}
+    <script>
+        const socket = io();
+
+        socket.on('connect', function() {
+            console.log('Connected');
+        });
+
+        socket.on('message', function(msg) {
+            const messageElement = document.createElement('div');
+            messageElement.textContent = msg;
+            document.getElementById('messages').appendChild(messageElement);
+        });
+
+        function sendMessage() {
+            const message = document.getElementById('message').value;
+            socket.send(message);
+            document.getElementById('message').value = '';
+        }
+    </script>
 </body>
 </html>

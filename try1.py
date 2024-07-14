@@ -2,7 +2,7 @@ from flask import Flask, render_template
 from flask import Flask, request
 from flask import Flask, redirect, url_for
 import mysql.connector
-
+from flask_socketio import SocketIO, send
 
 conn = mysql.connector.connect(
     host='127.0.0.1',
@@ -14,6 +14,8 @@ conn = mysql.connector.connect(
 cursor = conn.cursor()
 
 app = Flask(__name__)
+app.config['SECRET_KEY'] = 'your_secret_key'
+socketio = SocketIO(app)
 
 title = "home"
 title2 = "login"
@@ -21,7 +23,11 @@ title3 = "signup"
 title4 = "about"
 title5 = "chat"
 
-@app.route("/")
+"""@app.route('/chat')
+def index():
+    return render_template('index.html')"""
+
+
 @app.route("/home")
 def home():
     return render_template('home.html', title = title, user_name=user_name)
@@ -30,9 +36,9 @@ def home():
 def about():
     return render_template('about.html', title4 = title4)
 
-@app.route("/login")
+@app.route("/")
 def login():
-    return render_template('login.html', title2 = title2)
+    return render_template('index.html', title2 = title2)
 
 @app.route("/signup")
 def signup():
@@ -43,16 +49,16 @@ def chat():
     return render_template('chatui.html', title5= title5, user_name_1=user_name_1, fname_1=fname_1, lname_1=lname_1, phone_1=phone_1)
 
 
-@app.route('/checkuser', methods=['POST'])
+@app.route('/checkuser', methods=['POST'])  #checking if the user available in the database
 def checkuser():
         global user_name
         user_name = request.form.get('usr_nme')
         passowrd = request.form.get('pwd')
 
-        data = [user_name,passowrd] # ["kavishka_dulshan","aaa"]
-        data1 = [user_name] # ['kavishka_dulshan']
-        list1 = [] # []
-        list3 = [] # []
+        data = [user_name,passowrd]
+        data1 = [user_name]
+        list1 = []
+        list3 = [] 
         query = "SELECT*FROM user where user_name=" "%s"
         cursor.execute(query,data1)
         result = cursor.fetchall()
@@ -72,7 +78,9 @@ def checkuser():
         else:
             return redirect(url_for('login'))
         
-@app.route("/adduser", methods=['POST'])
+
+        
+@app.route("/adduser", methods=['POST'])   #adding a new user into the database
 def adduser():
         fname = request.form.get('fname')
         lname = request.form.get('lname')
@@ -90,7 +98,7 @@ def adduser():
         else:
             return "Something went wrong" 
         
-@app.route("/finduser", methods=['POST'])
+@app.route("/finduser", methods=['POST'])  #finding a user in the database for a chat
 def finduser():
      find = request.form.get('username')
      data = [find]
@@ -107,6 +115,17 @@ def finduser():
      phone_1 = result[0][5]
 
      return redirect(url_for('chat'))
+
+
+# retriving user details for buld up a session
+    
+
+@socketio.on('message')
+def handle_message(msg):
+    print(user_name ,"-", msg)
+    send(msg, broadcast=True)
         
 
 app.run(host="0.0.0.0", port=5505, debug=True)
+socketio.run(app, debug=True)
+
